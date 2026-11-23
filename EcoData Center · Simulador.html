@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EcoData Center · Simulador educativo de eficiencia energética</title>
+<style>
+:root{--bg:#f3ecdc;--paper:#faf5e9;--ink:#1b1a17;--mute:#5d574b;--rule:#1b1a17;--acc:#1f5c3a;--hl:#e8dfc6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14130f;--paper:#1c1a15;--ink:#ece5d3;--mute:#a79f8b;--rule:#ece5d3;--acc:#6fcf97;--hl:#2a271e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14130f;--paper:#1c1a15;--ink:#ece5d3;--mute:#a79f8b;--rule:#ece5d3;--acc:#6fcf97;--hl:#2a271e;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Georgia,"Times New Roman",serif}
+.sheet{max-width:1040px;margin:0 auto;background:var(--paper);padding:20px 28px 40px;border-left:1px solid var(--mute);border-right:1px solid var(--mute)}
+.top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font:12px/1.4 Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em;border-bottom:3px double var(--rule);padding-bottom:6px;color:var(--mute)}
+h1.mast{font:900 clamp(44px,9vw,96px)/1 Georgia,serif;text-align:center;margin:14px 0 2px;letter-spacing:-.02em}
+.lema{text-align:center;font-style:italic;font-size:18px;margin:0 0 10px}
+.bar{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);padding:5px 0;font:12px Arial,sans-serif;text-transform:uppercase;letter-spacing:.06em}
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin:22px 0;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+.hero h2{font:900 clamp(30px,5vw,52px)/1.05 Georgia,serif;margin:0 0 10px}
+.kicker{font:700 12px Arial,sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--acc);margin-bottom:6px}
+.cifra{background:var(--hl);border:2px solid var(--rule);padding:16px;text-align:center}
+.cifra b{display:block;font:900 64px/1 Georgia,serif;color:var(--acc)}
+.cifra small{display:block;font:12px Arial,sans-serif;color:var(--mute);margin-top:8px}
+section{margin:26px 0;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+h3{font:900 28px/1.1 Georgia,serif;margin:0 0 4px}
+.sec{font:700 12px Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;border-top:4px solid var(--rule);padding-top:6px;margin-bottom:8px}
+.cols{column-count:3;column-gap:28px;column-rule:1px solid var(--mute);text-align:justify;hyphens:auto}
+.cols p{margin:0 0 .8em}
+.cols p:first-of-type::first-letter{font:900 3.4em/.8 Georgia,serif;float:left;padding:4px 6px 0 0}
+blockquote{margin:12px 0;padding:10px 14px;border-left:5px solid var(--acc);font:italic 22px/1.3 Georgia,serif;column-span:all;background:var(--hl)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.two>div+div{border-left:1px solid var(--mute);padding-left:28px}
+.box{border:2px solid var(--rule);padding:14px;background:var(--hl)}
+.firma{font:italic 14px Georgia;color:var(--mute)}
+.qa b{display:block}.qa p{margin:2px 0 10px}
+table{border-collapse:collapse;width:100%;font:15px Arial,sans-serif}
+td,th{border:1px solid var(--mute);padding:6px 8px;text-align:left;vertical-align:top}
+.scroll{overflow-x:auto}
+dt{font-weight:700;margin-top:6px}dd{margin:0 0 4px}
+.sim{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+label{display:block;font:14px Arial,sans-serif;margin:8px 0 2px}
+input{width:100%;padding:8px;font:16px Arial,sans-serif;border:1px solid var(--rule);background:var(--paper);color:var(--ink)}
+.res{font:15px Arial,sans-serif}
+.res .big{font:900 34px Georgia,serif;color:var(--acc)}
+.bars div{height:22px;margin:4px 0;color:#fff;font:12px/22px Arial,sans-serif;padding-left:6px;background:var(--acc);white-space:nowrap;transition:width .3s}
+.bars .inf{background:#8a6d1f}
+.ok{color:var(--acc);font-weight:700}.no{color:#b3341e;font-weight:700}
+footer{font:13px/1.5 Arial,sans-serif;color:var(--mute)}
+a{color:var(--acc)}
+@media(max-width:760px){.hero,.two,.sim{grid-template-columns:1fr}.two>div+div{border-left:0;padding-left:0}.cols{column-count:1}.sheet{padding:14px}}
+
+.sheet{padding-top:28px}
+.lead{max-width:62ch}
+</style>
+</head>
+<body>
+<div class="sheet">
+<div class="top"><span>Nube bajo la lupa · Prototipo interactivo</span><span>Neiva, Huila · Colombia</span><span>Ingeniería de Software</span></div>
+<h1 class="mast" style="font-size:clamp(36px,7vw,72px)">EcoData Center</h1>
+<p class="lema">«Simulador educativo de eficiencia energética de un centro de datos»</p>
+<div class="bar"><span>Compare escenarios</span><span>Consumo total = TI × PUE</span><span>Meta: reducir ≥ 15 %</span></div>
+<section id="sim" style="border-bottom:0">
+<div class="sec">Prototipo interactivo</div>
+<h3>Compare escenarios</h3>
+<p class="firma">Estimaciones educativas; no representan mediciones de un centro de datos real.</p>
+<div class="sim">
+<div>
+<label for="ti">Energía de TI por periodo (kWh)</label><input id="ti" type="number" min="0" step="any" value="100">
+<label for="p0">PUE escenario base (≥ 1,0)</label><input id="p0" type="number" min="1" step="0.01" value="1.60">
+<label for="p1">PUE escenario optimizado (≥ 1,0)</label><input id="p1" type="number" min="1" step="0.01" value="1.30">
+<label for="re">Energía renovable (%)</label><input id="re" type="number" min="0" max="100" step="1" value="0">
+<label for="ef">Factor de emisión (kg CO₂e/kWh) — ingrese uno con fuente local verificable</label><input id="ef" type="number" min="0" step="any" placeholder="opcional">
+</div>
+<div class="res" aria-live="polite">
+<div>Consumo total base: <span class="big" id="t0">—</span> kWh</div>
+<div>Consumo total optimizado: <span class="big" id="t1">—</span> kWh</div>
+<div class="bars"><div id="b0"></div><div class="inf" id="i0"></div><div id="b1"></div><div class="inf" id="i1"></div></div>
+<p id="rd"></p><p id="em"></p>
+<small>Total = TI × PUE · Infraestructura = TI × (PUE − 1). El PUE no mide emisiones ni agua.</small>
+</div></div>
+</section>
+<footer><b>Cómo leerlo.</b> El PUE (Power Usage Effectiveness) es la relación entre la energía total del centro de datos y la energía de los equipos de TI. Un PUE de 1,0 sería ideal; cuanto más alto, más energía se va en refrigeración, distribución y otros servicios. Este simulador no mide agua ni emisiones reales: para estimar emisiones, ingrese un factor con fuente local verificable. Fuente de contexto: IEA (2025), <i>Energy and AI</i>.</footer>
+</div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function f(n){return n.toLocaleString('es-CO',{maximumFractionDigits:2})}
+function calc(){
+var ti=Math.max(0,parseFloat($('ti').value)||0),p0=Math.max(1,parseFloat($('p0').value)||1),p1=Math.max(1,parseFloat($('p1').value)||1);
+var re=Math.min(100,Math.max(0,parseFloat($('re').value)||0)),ef=parseFloat($('ef').value);
+var t0=ti*p0,t1=ti*p1,mx=Math.max(t0,t1,1);
+$('t0').textContent=f(t0);$('t1').textContent=f(t1);
+function bar(id,v,l){var e=$(id);e.style.width=Math.max(8,v/mx*100)+'%';e.textContent=l+': '+f(v)+' kWh'}
+bar('b0',ti,'TI base');bar('i0',t0-ti,'Infraestructura base');bar('b1',ti,'TI optimizado');bar('i1',t1-ti,'Infraestructura optimizado');
+var red=t0>0?(t0-t1)/t0*100:0;
+$('rd').innerHTML='Reducción: <b>'+f(red)+' %</b> — '+(red>=15?'<span class="ok">cumple la meta (≥ 15 %)</span>':'<span class="no">no alcanza la meta (≥ 15 %)</span>');
+if(isFinite(ef)&&ef>=0){var k=1-re/100;$('em').textContent='Emisiones estimadas (sobre la parte no renovable): base '+f(t0*k*ef)+' kg CO₂e · optimizado '+f(t1*k*ef)+' kg CO₂e.'}
+else{$('em').textContent='Ingrese un factor de emisión con fuente local para estimar emisiones.'}
+}
+['ti','p0','p1','re','ef'].forEach(function(i){$(i).addEventListener('input',calc)});
+calc();
+})();
+</script>
+</body>
+</html>
